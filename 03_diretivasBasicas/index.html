@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reatividade</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+
+        <div id="app">
+            <p>Camisa - <sup>R$</sup>{{preco}}</p>
+
+            <button @click="total++">+</button>
+            <button @click="total--">-</button>
+
+            <p>{{total}}</p>
+            <p>Total = R$ <span>{{total * preco}}</span></p>
+        </div>
+
+        <button @click="!pagou" data-value="pagou">pagar</button>
+
+        <p v-if="pagou">
+            <div  style="width: 50px; height: 50px; background-color: red;"></div>
+        </p>
+        <p v-if="pagou">
+            <div  style="width: 50px; height: 50px; background-color: green;"></div>
+        </p>
+        
+        
+        
+    </body>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                preco: 69,
+                total: 0,
+                pagou: false,
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{nome}}, 
+            {{idade}}, 
+            {{faculdade.possui}}, 
+            {{faculdade.curso}}
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    nome: 'Vincius Vasconcelos',
+                    idade: 24,
+                    faculdade:  {
+                        possui: 'sim',
+                        curso: 'Ciência da Computação'
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
