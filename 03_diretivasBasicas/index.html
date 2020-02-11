@@ -17,17 +17,17 @@
 
             <p>{{total}}</p>
             <p>Total = R$ <span>{{total * preco}}</span></p>
+
+            <button @click="pagou = !pagou">pagar</button>
+
+            <p v-if="!pagou">
+                <div v-if="!pagou" style="width: 50px; height: 50px; background-color: red;"></div>
+            </p>
+            <p v-if="pagou">
+                <div v-if="pagou" style="width: 50px; height: 50px; background-color: green;"></div>
+            </p>
         </div>
 
-        <button @click="!pagou" data-value="pagou">pagar</button>
-
-        <p v-if="pagou">
-            <div  style="width: 50px; height: 50px; background-color: red;"></div>
-        </p>
-        <p v-if="pagou">
-            <div  style="width: 50px; height: 50px; background-color: green;"></div>
-        </p>
-        
         
         
     </body>
@@ -41,5 +41,6 @@
                 pagou: false,
             }
         })
+
     </script>
 </html>

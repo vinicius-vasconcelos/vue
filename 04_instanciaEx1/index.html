@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Instância - Ex_1</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app1">
+            {{ferramenta}}   
+        </div>
+
+        <div id="app2">
+            {{instrumento}}   
+        </div>
+    </body>
+
+    <script>
+        const vm1 = new Vue({
+            el: '#app1',
+            data: {
+                ferramenta: 'Martelo',
+            }
+        });
+
+        const vm2 = new Vue({
+            el: '#app2',
+            data: {
+                instrumento: 'Violão',
+            }
+        });
+    </script>
+</html>

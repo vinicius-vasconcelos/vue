@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Methods - Ex_3</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>Valor = {{valor}} </p>
+            <p> {{alert}} </p>
+
+            <button @click="plus">+</button>
+            <button @click="minus">-</button>
+
+            <p> {{instrumento}} </p>
+            <button @click="mudarNome('Violão')">Click Aqui</button>
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: "#app",
+                data: {
+                    valor: 0,
+                    instrumento: '',
+                    alert: '',
+                },
+                methods: {
+                    plus() { 
+                        this.valor++; 
+                        this.verificarCupom();
+                    },
+                    minus() { 
+                        if(this.valor > 0)
+                            this.valor--; 
+
+                        this.verificarCupom();
+                    },
+                    mudarNome(param) { this.instrumento = param; },
+                    verificarCupom() { 
+                        if(this.valor > 5)
+                            this.alert = 'Agora você tem um cupom !!!';
+                        else
+                            this.alert = ' ';
+
+                    }
+                }
+            });
+        </script>
+    </body>
+
+</html>
