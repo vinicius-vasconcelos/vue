@@ -1,0 +1,96 @@
+[
+    {
+        "curso": "Web Designer Completo",
+        "link": "https://origamid.com.br/designer",
+        "aulas": [
+            {
+                "nome": "HTML e CSS",
+                "tempo": "22min"
+            },
+            {
+                "nome": "JAVASCRIPT",
+                "tempo": "15min"
+            },
+            {
+                "nome": "Formulário",
+                "tempo": "15min"
+            }
+        ]
+    },
+    {
+        "curso": "Super Javascript",
+        "link": "https://origamid.com.br/javascript",
+        "aulas": [
+            {
+                "nome": "Vanilla Javascript",
+                "tempo": "22min"
+            },
+            {
+                "nome": "jQuery",
+                "tempo": "15min"
+            },
+            {
+                "nome": "Vue",
+                "tempo": "15min"
+            }
+        ]
+    },
+    {
+        "curso": "Framework",
+        "link": "https://origamid.com.br/frameworl",
+        "aulas": [
+            {
+                "nome": "Vue",
+                "tempo": "22min"
+            },
+            {
+                "nome": "React",
+                "tempo": "15min"
+            },
+            {
+                "nome": "Angular",
+                "tempo": "15min"
+            }
+        ]
+    },
+    {
+        "curso": "CSS",
+        "link": "https://origamid.com.br/css",
+        "aulas": [
+            {
+                "nome": "CSS",
+                "tempo": "22min"
+            },
+            {
+                "nome": "LESS",
+                "tempo": "15min"
+            },
+            {
+                "nome": "SASS",
+                "tempo": "15min"
+            }
+        ]
+    },
+    {
+        "curso": "CSS - Framework",
+        "link": "https://origamid.com.br/cssFramework",
+        "aulas": [
+            {
+                "nome": "Bulma",
+                "tempo": "22min"
+            },
+            {
+                "nome": "Bootstrap",
+                "tempo": "15min"
+            },
+            {
+                "nome": "Materialize",
+                "tempo": "30min"
+            },
+            {
+                "nome": "Foundation",
+                "tempo": "10min"
+            }
+        ]
+    }
+]

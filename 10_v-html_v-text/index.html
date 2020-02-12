@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-html e v-text</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <!--v-html-->
+            <div v-html="link"></div>
+
+            <!--v-text-->
+            <p v-text="fruta"></p>
+
+            <!--v-once tira a reatividade-->
+            <p v-once>Valor inicial: R$ {{total}} </p>
+            <button>Comprar</button>
+        </div>
+    </body>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                link: '<a href="https://www.google.com.br">google</a>',
+                fruta: 'banana',
+                total: 150,
+            }
+        });
+    </script>
+</html>

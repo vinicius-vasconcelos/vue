@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Execício</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+
+    <body>
+        <!--
+            Use o arquivo json da aula, para listar os cursos e as matérias.
+        -->
+        <div id="app">
+            <button @click="puxarAula">Click</button>
+
+            <div v-for="curso in cursos">
+                <h3> {{curso.curso}} </h3>
+                <a :href="curso.link"> visite o curso </a>
+                <ul>
+                    <li v-for="aula in curso.aulas"> 
+                        {{aula.nome}} -  
+                        {{aula.tempo}}
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                cursos: []
+           },
+            methods: {
+                puxarAula(event) {
+                    fetch('./cursos.json')
+                        .then(resp =>  resp.json())
+                        .then(resp =>  this.cursos = resp)
+                }
+            }
+        });
+    </script>
+</html>

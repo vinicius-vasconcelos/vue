@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Execício</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+
+    <body>
+        <!--
+            Utilizando a api:
+            https://viacep.com.br/ws/04538133/json/
+            Mostre o cep, logradouro, complemento, bairro, localidade e uf do que for retornado.
+        -->
+        <div id="app">
+            <h2>Digite seu CEP e pressione enter</h2>
+            <input type="text" @keyup.enter="seach"> <br><br>
+            
+            <ul>
+                <li v-for="i, key in cep">
+                    {{key}} <br>
+                    &nbsp;&nbsp;&nbsp;{{i}}
+                </li>
+            </ul>
+        </div>
+    </body>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                cep: {}
+           },
+            methods: {
+                seach(event) {
+                    fetch(`https://viacep.com.br/ws/${event.target.value}/json/`)
+                        .then(resp => resp.json())
+                        .then( obj => this.cep = obj);
+                }
+            }
+        });
+    </script>
+</html>

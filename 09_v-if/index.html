@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-if</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+
+            <!--primeira forma-->
+            <p v-if="logado">usário logado</p>
+            <p v-else="logado">usário deslogado</p>
+
+            <!--segunda forma-->
+            <template v-if="logado">
+                <button @click="logado=!logado">Deslogar</button>
+            </template>
+
+            <template v-else="logado">
+                <button @click="logado=!logado">Logar</button>
+            </template>
+
+           <!--display none (menos custoso - toggle)-->
+           <p v-show="logado">Show</p>
+        </div>
+    </body>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                logado: false,
+            }
+        });
+    </script>
+</html>

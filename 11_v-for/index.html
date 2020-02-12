@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-for</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <!--v-for ARRAY-->
+            <ul>
+                <li v-for="i in cursos"> {{i}} </li>
+            </ul>
+
+            <!--v-for ARRAY + PARAMETROS-->
+            <ul>
+                <li v-for="iten, index in frutas"> {{index}} {{iten}} </li>
+            </ul>
+
+            <hr>
+            <!--v-for OBJETOS-->
+            <div>
+                <p v-for="value, key in estados"> 
+                    {{key}} <br>
+                    &nbsp;&nbsp;&nbsp; {{value.nome}} <br>
+                    &nbsp;&nbsp;&nbsp; {{value.populacao}}
+                </p>
+            </div>
+
+            <hr>
+            <!--v-for OBJETOS :key (fazendo vinculos)-->
+            <div>
+                <p v-for="value, key in estados" :key="key.id"> 
+                    {{key}} <br>
+                    &nbsp;&nbsp;&nbsp; {{value.nome}} <br>
+                    &nbsp;&nbsp;&nbsp; {{value.populacao}}
+                </p>
+            </div>
+
+            <hr>
+            <!--v-for ARRAY - push, pop(reativo) - update(ñ reativo)-->
+            <ul>
+                <li v-for="i in cursos"> {{i}} </li>
+            </ul>
+
+            <button @click="alterar">Alter</button>
+        </div>
+    </body>
+
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                cursos: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE', 'REACT'],
+                frutas: ['Banana', 'Uva', 'Goiaba', 'Melão', 'Malancia'],
+                estados: {
+                    sp: {
+                        id:1,
+                        populacao: "45 milhões",
+                        nome: "São Paulo"
+                    },
+                    mg: {
+                        id:2,
+                        populacao: "21 milhões",
+                        nome: "Minas Gerais"
+                    },
+                    rj: {
+                        id:3,
+                        populacao: "17 milhões",
+                        nome: "Rio de Janeiro"
+                    }
+                },
+            },
+            methods: {
+                alterar() { 
+                    this.$set(this.cursos, 0, 'teste');
+                }
+            }
+        });
+    </script>
+</html>
