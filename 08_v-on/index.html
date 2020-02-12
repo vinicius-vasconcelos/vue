@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-on</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+           <button v-on:click="chamou">Click</button>
+           <button @click="chamou2">Click</button>
+
+           <button v-on:click="estado=!estado" :class="estado?ativo:inativo">{{estado}}</button>
+
+           <a href="#interno" @click.prevent>Previnindo o padrão</a> <!--Prevent default-->
+           <a href="#interno" @click.once> Ativa só a primeira vez</a> <!--Só funciona a primeira vez-->
+           <a href="#interno" @click.prevent.once> teste</a>
+
+           <input type="text" @keyup.enter="enviar">
+
+            <p @mousemove="pescar">Mouseover X = {{mouse.x}}</p>
+        </div>
+            
+
+        <style>
+            a { display: block; }
+            .ativo { background-color: green; }
+            .inativo { background-color: red; }
+        </style>
+        <script>
+            const vm = new Vue({
+                el: "#app",
+                data: {
+                    estado: true,
+                    ativo: 'ativo',
+                    inativo: 'inativo',
+                    mouse: '',
+                },
+                methods: {
+                    chamou() { alert('v-on') },
+                    chamou2() { alert('@') },
+                    enviar() { alert('enviou'); },
+                    pescar(event) { this.mouse = event}
+                }
+            });
+        </script>
+    </body>
+
+</html>

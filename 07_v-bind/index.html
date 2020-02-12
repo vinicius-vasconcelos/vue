@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-bind</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <a v-bind:href="link">Link Google</a>
+            <p :class="cor" class="ativo">Parágrafo</p>
+            <p :class="comprou?liberar:n_liberar">Cliente comprou</p>
+        </div>
+            
+
+        <script>
+            const vm = new Vue({
+                el: "#app",
+                data: {
+                   link: 'https://google.com',
+                   cor: 'azul',
+                   liberar: 'verde',
+                   n_liberar: 'vermelho',
+                   comprou: false,
+                },
+            });
+        </script>
+    </body>
+
+</html>
