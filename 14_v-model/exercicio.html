@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercicio</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <!-- 
+            1 - Crie um criador de botões.
+
+            O usuário poderá definir:
+            width,
+            height,
+            font-size,
+            font-family,
+            text-align,
+            background,
+            color,
+            border-radius,
+
+            As escolhas serão feitas em campos de
+            formulário. Cada escolha deverá ser 
+            refletida em um elemento (o botão).
+
+
+            2 - Crie um formulário com, nome, email, telefone e mensagem.
+            Ao clicar em enviar, as informações preenchidas no formulário
+            devem aparecer abaixo do mesmo. (previna o comportamento padrão do botão enviar)
+        -->
+
+        <div id="app">
+            <h1>Crie seu botão</h1>
+            <input type="text" v-model.trim="styleBtn.width" placeholder="width">
+            <input type="text" v-model.trim="styleBtn.height" placeholder="height">
+            <input type="text" v-model.trim="styleBtn.fontSize" placeholder="font-size">
+            <input type="text" v-model.trim="styleBtn.fontFamily" placeholder="font-family">
+            <input type="color" v-model.trim="styleBtn.background" placeholder="background">
+            <input type="text" v-model.trim="styleBtn.color" placeholder="color">
+            <input type="text" v-model.trim="styleBtn.border" placeholder="border-radius">
+
+            <br><br>
+
+            <button :style="styleBtn">My Button</button>
+
+            <hr>
+            <input v-model="objPessoa.nome" type="text" placeholder="Nome">
+            <input v-model="objPessoa.email" type="email" placeholder="E-mail">
+            <input v-model="objPessoa.telefone" type="tel" placeholder="Telefone">
+            <textarea v-model="objPessoa.msg" cols="30" rows="10" placeholder="Mensagem"></textarea>
+
+            <button @click.prevent="enviar">Enviar</button>
+            <p>
+                {{result}}
+            </p>
+
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    styleBtn: {
+                        width:'',
+                        height:'',
+                        fontSize:'',
+                        fontFamily:'',
+                        background:'',
+                        color:'',
+                        borderRadius:'',
+                    },
+                    objPessoa: {
+                        nome: '',
+                        email: '',
+                        telefone: '',
+                        msg: '',
+                    },
+                    result: {}
+                },
+                methods: {
+                    enviar() {
+                        this.result = this.objPessoa;
+                    }
+                }
+            })
+        </script>
+
+        <style>
+           input {
+               display: block;
+               width: 300px;
+               height: 40px;
+               margin: 10px;
+               padding: 5px;
+           }
+        </style>
+    </body>
+</html>

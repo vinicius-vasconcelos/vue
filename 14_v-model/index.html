@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-model</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!--One way data-bind-->
+            <h1>One way data-bind</h1>
+            <input type="text" :value="nome">
+            <p> {{nome}} </p>
+            <textarea :value="msg" cols="30" rows="10"></textarea>
+            <p> {{msg}} </p>
+
+            <hr>
+            <!--Two way data-bind-->
+            <h1>Two way data-bind</h1>
+            <input type="text" v-model="nome">
+            <p> {{nome}} </p>
+            <input type="email" v-model="email">
+            <p> {{email}} </p>
+
+            <hr>
+            <!--More-->
+            <select v-model="fruta">
+                <option value="">Selecione Futa...</option>
+                <option value="Banana">Banana</option>
+                <option value="Melão">Melão</option>
+                <option value="Mamão">Mamão</option>
+                <option value="Uva">Uva</option>
+                <option value="Abacaxi">Abacaxi</option>
+            </select>
+
+            <p> {{fruta}} </p>
+
+            <hr>
+            <input type="text" v-model.lazy="seach" placeholder="lazy">
+            <p>{{seach}}</p>
+            <input type="text" v-model.number="number" placeholder="number">
+            <p>{{number}}</p>
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    nome: '',
+                    msg: '',
+                    email: '',
+                    fruta: '',
+                    seach: '',
+                    number: ''
+                },
+            })
+        </script>
+
+        <style>
+        </style>
+    </body>
+</html>

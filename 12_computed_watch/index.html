@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computed & Watch</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!--Computed (reativo)-->
+            <p>Total: {{total}} </p>
+
+            <ul>
+                <li v-for="carro in carrosAzuis"> {{carro.marca}} - {{carro.cor}} </li>
+            </ul>
+
+            <hr>
+            <!--Watch (armazena valor antigo)-->
+            <p> Contador: {{contador}} </p>
+            <button @click="contador++">Add</button>
+
+            <hr>
+            <!--Watch (assincrono)-->
+            <input type="text" placeholder="cep" maxlength="8" @keyup.enter="seach" v-model="cep">
+            <p>cep: {{cep}} </p>
+            
+            <ul>
+                <li v-for="i, key in endereco">
+                    {{key}} - {{i}}
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    preco: 59,
+                    desconto: 10,
+                    carros: [
+                        {
+                            marca: "VW",
+                            cor: "Azul"
+                        },
+                        {
+                            marca: "Ford",
+                            cor: "Preto"
+                        },
+                        {
+                            marca: "Tesla",
+                            cor: "Azul"
+                        }
+                    ],
+                    contador: 0,
+                    cep: '',
+                    endereco: {}
+                },
+                computed: {
+                    total() {
+                        return `R$ ${this.preco - this.desconto}`;
+                    },
+                    carrosAzuis() {
+                        return this.carros.filter(({cor}) => cor === 'Azul');
+                    }
+                },
+                watch: {
+                    contador(valorNovo, valorAntigo) { console.log(valorNovo, valorAntigo) },
+                    cep(valorNovo) { 
+                        if(valorNovo.length === 8)
+                            fetch(`https://viacep.com.br/ws/${valorNovo}/json/`)
+                                .then(r => r.json())
+                                .then(obj => this.endereco = obj);
+                        else
+                            this.endereco = {}
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

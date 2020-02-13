@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Style</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+           <button @click="ativo=!ativo" :class="{true:ativo}">{{ativo}}</button>
+           <button @click="ativo=!ativo" :class="[{false:ativo}, btn]">{{ativo}}</button>
+
+           <p :style="{background: bgcolor, color: textColor, fontSize: fontSize + 'px'}">Teste mlk</p>
+            <button @click="fontSize++">A+</button>
+            <button @click="fontSize--">A-</button>
+
+            <p :style="textStyle">New</p>
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    ativo: true,
+                    btn: 'btn',
+                    bgcolor: '#000',
+                    textColor: '#FFF',
+                    fontSize: 18,
+                    textStyle: {
+                        backgroundColor: '#AAA',
+                        color: '#000',
+                        fontSize: '22px',
+                    }
+                },
+            })
+        </script>
+
+        <style>
+            .true { background: green; }
+            .false { background: red; }
+            .btn {  width: 150px; height: 60px; border: none; }
+        </style>
+    </body>
+</html>
