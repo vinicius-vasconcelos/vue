@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-on</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!--v-on-->
+            <p @click.right="right">clique Dir</p>
+            <p @click.middle="middle">clique Scroll</p>
+
+
+            <!--hooks e eventos globais-->
+
+            <p class="scroll">position: {{totalScroll}} </p>
+        </div>
+
+        <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    totalScroll: 0
+                },
+                methods: {
+                    middle() {
+                        alert('middle')
+                    },
+                    right() {
+                        alert('right')
+                    },
+                    handleScroll() {
+                        this.totalScroll = window.scrollY;
+                    }
+                },
+                created() {
+                    window.addEventListener('scroll', this.handleScroll)
+                }
+            })
+        </script>
+
+        <style>
+            body { height: 2000px; }
+            p.scroll { position: fixed;  top: 25%;}
+        </style>
+    </body>
+</html>

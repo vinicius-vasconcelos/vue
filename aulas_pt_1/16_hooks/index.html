@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>hooks</title>
+
+        <script src="../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+
+            <!--lifecicle-->
+
+            <p> {{msg}} </p>
+
+            <p> {{git}} </p>
+
+            <hr>
+
+            <button @click="contador++">total: {{contador}}</button>
+
+            <hr>
+            <button @click="destruir">Destruir</button>
+        </div>
+    </body>
+
+    <script>
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg: 'ok',
+                git: {},
+                contador: 0
+            },
+            methods: {
+                puxarGit() {
+                    fetch('https://api.github.com/users/origamid')
+                        .then(r => r.json())
+                        .then(obj => this.git = obj)
+                },
+                destruir() {
+                    this.$destroy();
+                }
+            },
+            beforeCreate() {
+                console.log('aqui')
+            },
+            created() {
+                //geralmente usamos fetch aqui
+                console.log('Começou');
+                this.puxarGit();
+            },
+            beforeMount() { /*DOM criado*/ },
+            mounted() {/*DOM criado e populado pelo created*/ },
+            beforeUpdate() { /*smp utilizar quando quer atualizar tudo*/ },
+            updated() { /*smp utilizar quando quer atualizar tudo*/ },
+            beforeDestroy() { /*Antes de destruir*/},
+            destroyed() { /*Depois de destruir*/ }
+        })
+    </script>
+</html>
