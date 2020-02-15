@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Componente Básico 1</title>
+
+        <script src="../../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{msg}}
+            <botao-contador></botao-contador>
+            <componente-global></componente-global>
+            <componente-local></componente-local>
+
+            <componente-local2></componente-local2>
+        </div>
+    </body>
+
+    <script>
+        /* Componente Global */
+        Vue.component('BotaoContador', {
+            data(){
+
+                return {
+                    total: 0
+                }
+            },
+            template: `<button @click="total++">Contador: {{total}}</button>`,
+            methods: {
+                mostrarConsole() {console.log('ativou')}
+            }
+        });
+        Vue.component('ComponenteGlobal', {
+            template: `<p>Componente Global</p>`,
+        });
+
+
+        /*Componente Local*/
+        const ComponenteLocal = {
+            name: 'ComponenteLocal',
+            template: `<p>Componete Local</p>`
+        }
+        const ComponenteLocal2 = {
+            name: 'ComponenteLocal',
+            data() {
+                return {
+                    contar: 3
+                }
+            },
+            computed: {
+                contarDobro() { return this.contar * 2 }
+            },
+            template: `
+                <div style="border: 1px solid #000">
+                    <p>Componete Local2 = {{contarDobro}}</p>
+                    <p>Componete Local2.1 = {{contar}}</p>
+                    <botao-contador></botao-contador>
+                </div>
+            `
+        }
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'ola',
+            },
+            components: {
+                ComponenteLocal,
+                ComponenteLocal2
+            }
+        })
+    </script>
+</html>

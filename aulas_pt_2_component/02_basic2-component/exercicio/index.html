@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício</title>
+
+        <script src="../../../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <!-- 
+            Crie uma tela com 3 diferentes Componentes.
+
+            1 - Mostre o tempo do dia usando a API:
+            https://www.metaweather.com/api/location/455827/ (Código do Rio de Janeiro)
+
+            2 - Mostre a relação dolar/real
+            https://api.exchangeratesapi.io/latest?base=USD
+
+            3 - Mostre um usuário do GitHub
+            https://api.github.com/users/vinicius-vasconcelos
+
+            Crie os componentes em arquivos separados e utilize import/export
+            O componente 1 deve ser registrado globalmente
+            O componente 2 deve ser registrado localmente dentro do componente 3.
+            O componente 3 deve ser registrado localmente da instância Vue.js
+        -->
+
+        <div id="app">
+            <h1>{{init}}</h1>
+            <br>
+            <pesquisa-tempo></pesquisa-tempo>
+            <hr>
+            <pesquisa-git></pesquisa-git>
+        </div>
+    </body>
+
+    <script type="module">
+
+        import PesquisaTempo from './PesquisaTempo.js';
+        import PesquisaGit from './PesquisaGit.js';
+
+        Vue.component('PesquisaTempo', PesquisaTempo)
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                init: 'Exercício'
+            },
+            components: {
+                PesquisaGit
+            }
+        })
+    </script>
+</html>

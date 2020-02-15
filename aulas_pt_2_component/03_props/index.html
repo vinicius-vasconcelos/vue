@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Props</title>
+
+        <script src="../../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <lista-produtos :frutas="lista" titulo="Frutas da Feira"></lista-produtos>
+        </div>
+    </body>
+
+    <script type="module">
+
+        /* Props, passagem de paramretro entre componentes */
+
+        const ItemProduto = {
+            name: 'ItemProdutos',
+            //props: ['fru'],
+            props: {
+                fru: {
+                    type: String,
+                    required: true,
+                },
+                valorFruta: Number, //fazendo ou [Number, String]
+                tamanho: {
+                    type: String,
+                    default: 'grande',
+                }
+            },
+            template: `
+                <li>
+                    {{fru}} R$ {{valorFruta}}
+                     - {{tamanho}}
+                </li>
+            `
+        }
+
+        const ListaProdutos = {
+            name: 'ListaProdutos',
+            props: ['frutas', 'titulo'],
+            template: `
+                <ul>
+                    <h1>{{titulo}}</h1>
+                    <item-produto 
+                        v-for="i in frutas" 
+                        :key="i" 
+                        :fru="i"
+                        :valorFruta="19.90"
+                    ></item-produto>
+                </ul>
+            `,
+            components: {
+                ItemProduto
+            }
+        }
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                lista:['Banana', 'Laranja', 'Uva']
+            },
+            components: {
+                ListaProdutos
+            }
+        })
+    </script>
+</html>
