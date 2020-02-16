@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>One Way Data Flow</title>
+
+        <script src="../../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <!-- 
+            Crie um componente com um campo de input e um botão para enviar o valor.
+            Nesse campo de input será possível escrever o simbolo de empresas americanas
+
+            simbolos ex:
+            aapl -> Apple
+            goog -> Google
+            msft -> Microsoft
+            amzn -> Amazon
+            fb -> Facebook
+
+            Ao clicar no botão, faça um fetch com a API:
+            https://api.iextrading.com/1.0/stock/${SIMBOLO}/quote
+
+            O resultado do fetch deverá ser mostrado em um componente filho do formulário.
+            Envia as informações utilizando prop
+            
+            Mostre todas as informações do fetch utilizando um loop.
+        -->
+
+        <div id="app">
+            <h1>Conversor de Moedas</h1>
+            <input type="text" placeholder="R$" v-model="valor">
+            <br>
+            <button @click="getValores">Converter</button>
+            <hr>
+            <br>
+            <data-view :infoobj="obj.rates" :val="valor" ></data-view>
+        </div>
+    </body>
+
+    <script type="module">
+
+        const DataView = {
+            name: 'DataView',
+            props: {
+                infoobj: {
+                    type: [Object, Array]
+                },
+                val: {
+                    type: [Number, String],
+                    default: 1,
+                }
+            },
+           filters: {
+                maskUSD(valor) {
+                    return valor.toLocaleString('pt-br', { style: 'currency', currency: 'USD' })
+                },
+                maskBRL(valor) {
+                    return valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+                },
+                maskEUR(valor) {
+                    return valor.toLocaleString('pt-br', { style: 'currency', currency: 'EUR' })
+                },
+                maskJPY(valor) {
+                    return valor.toLocaleString('pt-br', { style: 'currency', currency: 'JPY' })
+                }
+            },
+            template: `
+                <div v-if="infoobj">
+                    <h2>Resultado:</h2>
+                    <h3>Reais -> Dolars</h3>
+                    <p>{{val | maskBRL}} == {{infoobj.USD * val | maskUSD}}</p>
+
+                    <h3>Reais -> Euros</h3>
+                    <p>{{val | maskBRL}} == {{infoobj.EUR * val | maskEUR}}</p>
+
+                    <h3>Reais -> Ienes</h3>
+                   <p>{{val | maskBRL}} == {{infoobj.JPY * val | maskJPY}}</p>
+
+                    <ul>
+                        <li v-for="i, indice in infoobj">
+                            {{indice}}
+                            &nbsp&nbsp{{i}}
+                        </li>
+                    </ul>
+                </div>
+            `,
+        }
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                obj: {},
+                valor: 0,
+            },
+            methods: {
+                getValores (){
+                    fetch('https://api.exchangeratesapi.io/latest?base=BRL')
+                        .then(r => r.json())
+                        .then(res => this.obj = res)
+                }
+            },
+            watch: {
+                valor() {
+                    this.obj = {}
+                }
+            },
+            components: {
+                DataView
+            }
+        })
+    </script>
+</html>

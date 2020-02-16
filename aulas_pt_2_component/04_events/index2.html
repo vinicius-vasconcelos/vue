@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Events - event Bus</title>
+
+        <script src="../../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <!-- 
+            Event bus
+         -->
+        <div id="app">
+            <componente-um></componente-um>
+            <componente-dois></componente-dois>
+        </div>
+    </body>
+
+    <script type="module">
+
+
+        // Enviando eventos entre irmãos 
+        const EventBus = new Vue({});
+
+        const ComponenteUm = {
+            name: 'ComponenteUm',
+            template: `
+                <p @click="emite">Componente 1</p>
+            `,
+            methods:{
+                emite() {
+                    EventBus.$emit('myEvent1', 'Foi irmão')
+                }
+            }
+        }
+
+        const ComponenteDois = {
+            name: 'ComponenteDois',
+            data() {
+                return {
+                    msg: ''
+                }
+            },
+            template: `
+                <p>Componente 2 - {{msg}}</p>
+            `,
+            created() {
+                EventBus.$on('myEvent1', evt => this.msg = evt)
+            }
+        }
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                
+            },
+            components: {
+                ComponenteUm,
+                ComponenteDois
+            }
+        })
+    </script>
+</html>

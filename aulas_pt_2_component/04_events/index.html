@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Events</title>
+
+        <script src="../../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <!--@update:totalclientes="$event"-->
+        <!-- @update:totalclientes="mostarMensagem" -->
+        <!-- :totalclientes.sync="totalClientes" -->
+
+
+        <div id="app">
+            <p>Total de clientes: {{totalClientes}}</p>
+            <meu-botao 
+                :totalclientes.sync="totalClientes"
+            ></meu-botao>
+        </div>
+    </body>
+
+    <script type="module">
+
+        /* Propagação e de eventos ENTRE FILHO E PAI*/
+        const MeuBotao = {
+            name: 'MeuBotao',
+            template: `
+                <button @click="upCli" >Clientes =  {{cli}}</button>
+            `,
+            props: ['totalclientes'],
+            methods: {
+                upCli() {
+                    this.$emit('update:totalclientes', ++this.cli)
+                }
+            },
+            data() {
+                return {
+                    cli: this.totalclientes,
+                }
+            }
+        }
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                totalClientes: 0,
+            },
+            components: {
+                MeuBotao
+            },
+            methods: {
+                mostarMensagem(msg) {
+                    this.totalClientes = msg;
+                }
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>One Way Data Flow</title>
+
+        <script src="../../vueJS/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+           <botao-contador :valor="total"></botao-contador>
+        </div>
+    </body>
+
+    <script type="module">
+
+        /*Copiar valores, melhor prática*/
+        const BotaoContador = {
+            name: 'BotaoContador',
+            props: ['valor'],
+            data() {
+                return {
+                    valorBtn: this.valor
+                }
+            },
+            template: `
+                <button @click="valorBtn++">Esse é o valor: {{valorBtn}}</button>
+            `
+        }
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+              total: 0,  
+            },
+            components: {
+                BotaoContador
+            }
+        })
+    </script>
+</html>
