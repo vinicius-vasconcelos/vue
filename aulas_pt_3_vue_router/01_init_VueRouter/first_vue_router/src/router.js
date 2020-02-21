@@ -14,10 +14,31 @@ export default new Router({
             name: 'Home',
             component: Home
         },
-        {
+       /* {
             path: '/cursos',
             name: 'Cursos',
             component: Cursos
         },
+        {
+            path: '/cursos/:curso',
+            name: 'Cursos',
+            component: Cursos,
+            props: true
+        },*/
+        {
+            path: '/cursos',
+            name: 'Cursos',
+            component: Cursos,
+            props: true,
+            children: [
+                {
+                    path: ':curso',
+                    name: 'Cursos',
+                    component: Cursos,
+                },
+            ]
+        },
+        
+
     ]
 })
