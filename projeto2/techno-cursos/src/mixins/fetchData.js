@@ -16,7 +16,7 @@ export default {
                     setTimeout(()=> {
                         this.api = objData
                         this.loading = false
-                    }, 2000)
+                    }, 1500)
                     
                 })
         }

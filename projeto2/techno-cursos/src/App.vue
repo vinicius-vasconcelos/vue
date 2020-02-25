@@ -16,11 +16,6 @@
 </script>
 
 <style>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
 
 	html, body {
 		width: 100%;
@@ -30,9 +25,14 @@
 	body {
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		color: #234;
+		margin: 0;
 	}
 
-	ul { list-style: none; }
+	ul { 
+		list-style: none; 
+		padding: 0; 
+		margin: 0;
+	}
 
 	a { 
 		font-weight: bold;
@@ -40,9 +40,30 @@
 		color: #234;
 	}
 
+	img { max-width: 100%; }
+
 	.container {
 		max-width: 800px;
 		margin: 0 auto;
 		padding: 20px
+	}
+
+	.v-enter {
+		opacity: 0;
+		transform: translate3d(-20px, 0, 0);
+	}
+
+	.v-enter-active {
+		transition: all .3s;		
+	}
+
+	.conteudo {
+		display: grid;
+		grid-template-columns: 1fr minmax(200px, 400px);
+		grid-gap: 30px;
+	}
+
+	@media screen and (max-width: 750px) {
+		.conteudo { display: block }
 	}
 </style>
