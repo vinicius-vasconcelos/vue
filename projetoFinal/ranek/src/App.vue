@@ -1,7 +1,11 @@
 <template>
 	<div id="app">
 		<TheHeader/>
-		<main><router-view></router-view></main>
+			<main>
+				<transition mode="out-in">
+					<router-view></router-view>
+				</transition>
+			</main>
 		<TheFooter/>
 	</div>
 </template>
@@ -41,6 +45,7 @@
 		padding: 10px 30px;
 		background: #87F;
 		border-radius: 4px;
+		border: none;
 		color: #FFF;
 		text-align: center;
 		font-size: 1rem;

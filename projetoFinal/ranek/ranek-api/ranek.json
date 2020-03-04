@@ -10,6 +10,17 @@
       "numero": "25",
       "estado": "RJ",
       "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": "vinicius@origamid.com",
+      "email": "vinicius@origamid.com",
+      "nome": "Vinicius Vasconcelos",
+      "senha": "123",
+      "rua": "Rua Perto Ali",
+      "cep": "12345678",
+      "numero": "27",
+      "estado": "RJ",
+      "cidade": "Rio de Janeiro"
     }
   ],
   "produto": [
