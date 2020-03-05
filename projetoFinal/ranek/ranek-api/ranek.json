@@ -21,6 +21,30 @@
       "numero": "27",
       "estado": "RJ",
       "cidade": "Rio de Janeiro"
+    },
+    {
+      "id": "jose@origamid.com",
+      "nome": "José",
+      "email": "jose@origamid.com",
+      "senha": "123",
+      "cep": "19025360",
+      "rua": "Rua Mamede Mariano",
+      "numero": "100",
+      "bairro": "Parque São Matheus",
+      "cidade": "Presidente Prudente",
+      "estado": "SP"
+    },
+    {
+      "id": "clo@origamid",
+      "nome": "Clodoaldo",
+      "email": "clo@origamid",
+      "senha": "123",
+      "cep": "19025360",
+      "rua": "Rua Mamede Mariano",
+      "numero": "100",
+      "bairro": "Parque São Matheus",
+      "cidade": "Presidente Prudente",
+      "estado": "SP"
     }
   ],
   "produto": [
@@ -50,8 +74,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo tablet.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "netbook",
       "nome": "Netbook",
       "usuario_id": "andre@origamid.com",
@@ -59,8 +83,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Netbook.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartwatch",
       "nome": "Smartwatch",
       "usuario_id": "andre@origamid.com",
@@ -68,8 +92,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartwatch.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartpen",
       "nome": "Smartpen",
       "usuario_id": "andre@origamid.com",
@@ -77,8 +101,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartpen.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartglass",
       "nome": "Smartglass",
       "usuario_id": "andre@origamid.com",
@@ -86,8 +110,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartglass.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartring",
       "nome": "Smartring",
       "usuario_id": "andre@origamid.com",
@@ -95,8 +119,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartring.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartshoes",
       "nome": "Smartshoes",
       "usuario_id": "andre@origamid.com",
@@ -104,8 +128,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartshoes.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartjeans",
       "nome": "Smartjeans",
       "usuario_id": "andre@origamid.com",
@@ -113,8 +137,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartjeans.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartjeansblack",
       "nome": "Smartjeansblack",
       "usuario_id": "andre@origamid.com",
@@ -122,8 +146,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartjeansblack.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartjeanswhite",
       "nome": "Smartjeanswhite",
       "usuario_id": "andre@origamid.com",
@@ -131,8 +155,8 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartjeanswhite.",
       "fotos": null
-		},
-		{
+    },
+    {
       "id": "smartjeansblue",
       "nome": "Smartjeansblue",
       "usuario_id": "andre@origamid.com",
@@ -140,6 +164,30 @@
       "vendido": "false",
       "descricao": "Esse é um novo Smartjeansblue.",
       "fotos": null
-		}
+    },
+    {
+      "nome": "Teste",
+      "preco": "100",
+      "descricao": "ola mundo",
+      "fotos": null,
+      "usuario_id": "jose@origamid.com",
+      "id": "Vfo_sIp"
+    },
+    {
+      "nome": "Teste",
+      "preco": "100",
+      "descricao": "nice girls",
+      "fotos": null,
+      "usuario_id": "jose@origamid.com",
+      "id": "3SwmZmS"
+    },
+    {
+      "nome": "",
+      "preco": "",
+      "descricao": "oabas",
+      "fotos": null,
+      "usuario_id": "jose@origamid.com",
+      "id": "2xpNMGn"
+    }
   ]
 }
