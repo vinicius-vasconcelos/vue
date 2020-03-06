@@ -7,7 +7,11 @@ const axiosInstance = axios.create({
 export const api = {
     get(url) { return axiosInstance.get(url) },
 
-    post(url, body) { return axiosInstance.post(url, body) }
+    post(url, body) { return axiosInstance.post(url, body) },
+
+    put(url, body) { return axiosInstance.put(url, body) },
+
+    delete(url) { return axiosInstance.delete(url) }
 }
 
 export function getCep(cep) { return axios.get(`https://viacep.com.br/ws/${cep}/json/ `) }

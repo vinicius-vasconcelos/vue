@@ -32,7 +32,6 @@
                 } catch(err) {
                     console.log(`Houve um erro: [ERROR: ${err}]`)
                 }
-                
             }
         }
     }

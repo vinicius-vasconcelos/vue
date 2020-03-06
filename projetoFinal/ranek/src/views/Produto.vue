@@ -12,7 +12,10 @@
                 <p class="preco">{{produto.preco | numeroPreco}}</p>
                 <p class="descricao">{{produto.descricao}}</p>
 
-                <button v-if="produto.vendido === 'false'"  class="btn">Comprar</button>
+                <transition v-if="produto.vendido === 'false'" mode="out-in">
+                    <button v-if="!finalizar" @click="finalizar = true" class="btn">Comprar</button>
+                    <FinalizarCompra v-else :produto="produto" />
+                </transition>
                 <button v-else  class="btn" disabled>Vendido</button>
             </div>
         </div>
@@ -22,16 +25,21 @@
 </template>
 
 <script>
-     import { api } from '@/services.js'
+    import FinalizarCompra from '@/components/FinalizarCompra.vue';
+    import { api } from '@/services.js'
 
     export default {
         name: 'Produto',
         data() {
             return {
                 produto: null,
+                finalizar: false,
             }
         },
         props:['id'],
+        components: {
+            FinalizarCompra
+        },
         methods: {
             getProduto() {
                 api.get(`/produto/${this.id}`)

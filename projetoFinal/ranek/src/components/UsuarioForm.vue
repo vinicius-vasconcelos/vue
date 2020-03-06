@@ -1,8 +1,10 @@
 <template>
     <form action="">
-        <input v-model="nome" type="text" name="nome" id="nome" placeholder="Nome completo...">
-        <input v-model="email" type="email" name="email" id="email" placeholder="fulano@gmail.com">
-        <input v-model="senha" type="password" name="senha" id="senha" placeholder="********">
+        <div v-if="mostrarDadosLogin" class="usuario">
+            <input v-model="nome" type="text" name="nome" id="nome" placeholder="Nome completo...">
+            <input v-model="email" type="email" name="email" id="email" placeholder="fulano@gmail.com">
+            <input v-model="senha" type="password" name="senha" id="senha" placeholder="********">
+        </div>
         <input v-model="cep" @keyup="preencherCep" type="text" name="cep" id="cep" placeholder="00000-000">
         <input v-model="rua" type="text" name="rua" id="rua" placeholder="Nome da rua...">
         <input v-model="numero" type="text" name="numero" id="numero" placeholder="000A">
@@ -27,7 +29,10 @@
                 fields: ['nome', 'email', 'senha', 'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado'],
                 base: 'usuario',
                 mutation: 'UPDATE_USUARIO'
-            })
+            }),
+            mostrarDadosLogin() {
+                return (!this.$store.state.login) || (this.$route.name === 'Usuario-editar') 
+            }
         },
         methods: {
             preencherCep() {
@@ -51,7 +56,8 @@
 </script>
 
 <style scoped>
-    form {
+    form, 
+    .usuario {
         display: grid;
         grid-template-columns: 1fr;
         align-items: center
